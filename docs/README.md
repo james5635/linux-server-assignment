@@ -23,7 +23,7 @@ sudo dnf install -y samba samba-common samba-client
 
 # Create shared directory
 sudo mkdir -p /srv/samba/shared
-sudo chmod 2775 /srv/samba/shared
+sudo chmod 777 /srv/samba/shared
 
 sudo setsebool -P samba_export_all_rw on
 sudo semanage fcontext -a -t samba_share_t "/srv/samba/shared(/.*)?"
