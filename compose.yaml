@@ -1,9 +1,18 @@
 services:
   file_server:
     image: quay.io/centos/centos:stream9
+    
     volumes:
       - ./src/file_server/file_server.sh:/root/file_server.sh:ro
     working_dir: /root
     command: bash /root/file_server.sh
     ports:
-      - "8000:5000"
+      - "445:445"
+  proxy_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/proxy_server/proxy_server.sh:/root/proxy_server.sh:ro
+    working_dir: /root
+    command: bash /root/proxy_server.sh
+    ports:
+      - "3128:3128"
