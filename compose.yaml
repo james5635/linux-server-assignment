@@ -16,3 +16,11 @@ services:
     command: bash /root/proxy_server.sh
     ports:
       - "3128:3128"
+  dns_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/dns_server/dns_server.sh:/root/dns_server.sh:ro
+    working_dir: /root
+    command: bash /root/dns_server.sh
+    ports:
+      - "53:53"
