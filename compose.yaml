@@ -23,4 +23,12 @@ services:
     working_dir: /root
     command: bash /root/dns_server.sh
     ports:
-      - "53:53"
+      - "127.0.0.1:53:53"
+  terminal_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/terminal_server/terminal_server.sh:/root/terminal_server.sh:ro
+    working_dir: /root
+    command: bash /root/terminal_server.sh
+    ports:
+      - "127.0.0.1:5901:5901"
