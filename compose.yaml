@@ -32,3 +32,11 @@ services:
     command: bash /root/terminal_server.sh
     ports:
       - "127.0.0.1:5901:5901"
+  web_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/web_server/web_server.sh:/root/web_server.sh:ro
+    working_dir: /root
+    command: bash /root/web_server.sh
+    ports:
+      - "127.0.0.1:80:80"
