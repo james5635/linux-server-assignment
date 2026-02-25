@@ -40,3 +40,11 @@ services:
     command: bash /root/web_server.sh
     ports:
       - "127.0.0.1:80:80"
+  database_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/database_server/postgres.sh:/root/postgres.sh:ro
+    working_dir: /root
+    command: bash /root/web_server.sh
+    ports:
+      - "127.0.0.1:5432:5432"
