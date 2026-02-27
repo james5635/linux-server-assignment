@@ -54,3 +54,13 @@ services:
       - "127.0.0.1:5432:5432"
       - "127.0.0.1:27017:27017"
       - "127.0.0.1:3306:3306"
+  mail_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/mail_server/mail_server.sh:/root/mail_server.sh:ro
+    working_dir: /root
+    command: bash /root/mail_server.sh
+    ports:
+      - "127.0.0.1:25:25"
+      - "127.0.0.1:143:143"
+      - "127.0.0.1:110:110"
