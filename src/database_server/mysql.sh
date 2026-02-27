@@ -4,10 +4,12 @@ echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 
 dnf install -y mariadb-server mariadb
 
-/usr/bin/mariadb-install-db 
+/usr/bin/mariadb-install-db --user=mysql
 # sed -i "s|#bind-address=0.0.0.0|bind-address=0.0.0.0|" /etc/my.cnf.d/mariadb-server.cnf
 
 /usr/bin/mariadbd-safe --nowatch
+
+sleep 1
 
 mariadb <<"EOF"
 -- Source - https://stackoverflow.com/a/1559992
@@ -19,3 +21,4 @@ GRANT ALL PRIVILEGES ON *.* TO 'monty'@'localhost' WITH GRANT OPTION;
 CREATE USER 'monty'@'%' IDENTIFIED BY 'some_pass';
 GRANT ALL PRIVILEGES ON *.* TO 'monty'@'%' WITH GRANT OPTION;
 EOF
+echo "sucessfully created user"
