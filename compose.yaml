@@ -1,7 +1,8 @@
+# EXPOSE/expose => no-op (modern)
+              # => ... (old)
 services:
   file_server:
     image: quay.io/centos/centos:stream9
-    
     volumes:
       - ./src/file_server/file_server.sh:/root/file_server.sh:ro
     working_dir: /root
@@ -43,8 +44,11 @@ services:
   database_server:
     image: quay.io/centos/centos:stream9
     volumes:
-      - ./src/database_server/postgres.sh:/root/postgres.sh:ro
+      - ./src/database_server/database_server.sh:/root/database_server.sh:ro
+      - ./src/database_server/postgresql.sh:/root/postgresql.sh:ro
+      - ./src/database_server/mongodb.sh:/root/mongodb.sh:ro
     working_dir: /root
-    command: bash /root/web_server.sh
+    command: bash /root/database_server.sh
     ports:
       - "127.0.0.1:5432:5432"
+      - "127.0.0.1:27017:27017"
