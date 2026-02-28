@@ -9,7 +9,7 @@ dnf install -y cronie openssh-clients
 mkdir /backup
 
 cat <<"EOF" >> /etc/crontab
-*  *  *  *  * root scp -r root@ftp_server:/home/ftpuser /backup 2>&1 >> /log.txt
+*  *  *  *  * root scp -r root@ftp_server:/home/ftpuser /backup && date >> /log.txt
 EOF
 
 mkdir -p /root/.ssh
