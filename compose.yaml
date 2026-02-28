@@ -64,3 +64,11 @@ services:
       - "127.0.0.1:25:25"
       - "127.0.0.1:143:143"
       - "127.0.0.1:110:110"
+  ftp_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/ftp_server/ftp_server.sh:/root/ftp_server.sh:ro
+    working_dir: /root
+    command: bash /root/ftp_server.sh
+    ports:
+      - "127.0.0.1:21:21"
