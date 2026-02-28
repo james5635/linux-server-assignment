@@ -91,3 +91,13 @@ services:
     image: nginx:stable-alpine
     volumes:
       - ./src/load_balancing/web2.html:/usr/share/nginx/html/index.html:ro
+  backup_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/backup_server/backup_server.sh:/root/backup_server.sh:ro
+    working_dir: /root
+    command: bash /root/backup_server.sh
+    depends_on:
+      - ftp_server
+    # ports:
+      # - "127.0.0.1:80:80"
