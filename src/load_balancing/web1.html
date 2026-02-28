@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Server 1</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #d0f0c0; text-align: center; padding-top: 50px; }
+        h1 { color: #2e8b57; }
+        p.time { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Web Server 1!</h1>
+    <p>This page is served by <strong>web1</strong>.</p>
+    <p class="time" id="requestTime"></p>
+
+    <script>
+        const now = new Date();
+        document.getElementById('requestTime').innerText = "Request Time: " + now.toLocaleString();
+    </script>
+</body>
+</html>

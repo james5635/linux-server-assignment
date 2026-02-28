@@ -72,3 +72,22 @@ services:
     command: bash /root/ftp_server.sh
     ports:
       - "127.0.0.1:21:21"
+  load_balancing:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/load_balancing/load_balancing.sh:/root/load_balancing.sh:ro
+    working_dir: /root
+    command: bash /root/load_balancing.sh
+    depends_on:
+      - web1
+      - web2
+    ports:
+      - "127.0.0.1:80:80"
+  web1:
+    image: nginx:stable-alpine
+    volumes:
+      - ./src/load_balancing/web1.html:/usr/share/nginx/html/index.html:ro
+  web2:
+    image: nginx:stable-alpine
+    volumes:
+      - ./src/load_balancing/web2.html:/usr/share/nginx/html/index.html:ro
