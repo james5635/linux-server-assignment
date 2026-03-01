@@ -35,7 +35,7 @@ LLMs - Large Language Model  (Fine Tuner)
 11. Load Balancing ✅
 12. Failover Cluster 
 13. FTP Server ✅
-14. Container (Docker) 
+14. Container (Docker) ✅
 15. Domain Controller 
 
 LLMs - Large Language Model (Fine Tuner) 
