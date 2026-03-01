@@ -101,3 +101,12 @@ services:
       - ftp_server
     # ports:
       # - "127.0.0.1:80:80"
+  docker:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/docker/docker.sh:/root/docker.sh:ro
+    working_dir: /root
+    command: bash /root/docker.sh
+    privileged: true
+    ports:
+      - "127.0.0.1:8081:22"
