@@ -4,7 +4,7 @@ echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 dnf install epel-release -y
 
 # Install OpenVPN and Easy-RSA
-dnf install -y openvpn easy-rsa
+dnf install -y openvpn easy-rsa iptables
 
 # Setup Easy-RSA
 mkdir -p /etc/openvpn/easy-rsa
@@ -67,7 +67,8 @@ cat > /etc/openvpn/clients/client1.ovpn <<EOF
 client
 dev tun
 proto udp
-remote YOUR_SERVER_IP 1194
+# remote YOUR_SERVER_IP 1194
+remote vpn_server 1194
 resolv-retry infinite
 nobind
 persist-key
@@ -91,8 +92,12 @@ $(cat ta.key)
 EOF
 
 # Enable IP forwarding
-# echo "net.ipv4.ip_forward = 1" | tee -a /etc/sysctl.conf
-# sysctl -p
+# sysctl -w net.ipv4.ip_forward=1
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# Masquerade VPN subnet
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+# iptables -A FORWARD -i tun0 -j ACCEPT
+# iptables -A FORWARD -o tun0 -j ACCEPT
 
 # Starting OpenVPN
 exec openvpn --cd /etc/openvpn --config server.conf
