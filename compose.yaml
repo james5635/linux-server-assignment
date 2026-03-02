@@ -158,10 +158,10 @@ services:
     devices:
       - /dev/net/tun     # TUN device
     volumes:
-      - ./src/vpn_client/vpn_client.sh:/root/vpn_client.sh:ro
+      - ./src/vpn_server/vpn_client.sh:/root/vpn_client.sh:ro
       - openvpn-data:/etc/openvpn
     working_dir: /root
-    command: bash /root/vpn_client.sh
+    command: sleep infinity
     # ports:
       # - "1194:1194/udp"
 volumes:

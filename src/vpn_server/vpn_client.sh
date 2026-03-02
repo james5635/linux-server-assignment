@@ -4,6 +4,6 @@ echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 dnf install epel-release -y
 
 # Install OpenVPN and Easy-RSA
-dnf install -y openvpn easy-rsa
+dnf install -y openvpn easy-rsa iproute
 
-exec openvpn --config /etc/openvpn/clients/client1.ovpn
+openvpn --config /etc/openvpn/clients/client1.ovpn --daemon

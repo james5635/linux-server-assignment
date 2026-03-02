@@ -6,6 +6,9 @@ dnf install epel-release -y
 # Install OpenVPN and Easy-RSA
 dnf install -y openvpn easy-rsa iptables
 
+# Remove existing openvpn files
+rm -rf /etc/openvpn/*
+
 # Setup Easy-RSA
 mkdir -p /etc/openvpn/easy-rsa
 cp -r /usr/share/easy-rsa/3/* /etc/openvpn/easy-rsa/
