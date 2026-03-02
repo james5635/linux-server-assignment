@@ -20,6 +20,7 @@ documentation for details.
    mail_server
    backup_server
    load_balancing
+   failover_cluster
    ftp_server
    docker
    domain_controller

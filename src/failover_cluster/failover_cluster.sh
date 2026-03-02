@@ -7,7 +7,7 @@
 echo "fastestmirror=True" >> /etc/dnf/dnf.conf
 
 dnf config-manager --set-enabled highavailability
-dnf install -y pcs pacemaker corosync fence-agents-all
+dnf install -y pcs pacemaker corosync fence-agents-all iproute
 dnf install -y nginx
 
 echo "hacluster:password" | chpasswd

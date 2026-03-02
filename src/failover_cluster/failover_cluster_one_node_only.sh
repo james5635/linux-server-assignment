@@ -4,16 +4,18 @@
 # | Run on one node only |
 # +----------------------+
 
-pcs host auth node1 node2 -u hacluster
+IP=$(ip -4 addr show eth0 | grep -oP 'inet \K[\d./]+' | cut -d/ -f1)
 
-pcs cluster setup mycluster node1 node2
+pcs host auth failover_cluster failover_cluster_2 -u hacluster
+
+pcs cluster setup mycluster failover_cluster failover_cluster_2
 pcs cluster start --all
 
 pcs property set stonith-enabled=false
 pcs property set no-quorum-policy=ignore
 
 pcs resource create vip ocf:heartbeat:IPaddr2 \
-    ip=172.18.0.200 \
+    ip="${IP%.*}.200" \
     cidr_netmask=16 \
     nic=eth0 \
     op monitor interval=30s

@@ -15,7 +15,7 @@ Implementation
 Usage
 -----
 
-.. code-block::
+.. code-block:: bash
 
     docker exec -it centos9_systemd bash
     su admin
