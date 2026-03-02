@@ -15,6 +15,12 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
    
+   dhcp_server
    vpn_server
+   mail_server
+   backup_server
+   load_balancing
+   ftp_server
+   docker
    domain_controller
    
