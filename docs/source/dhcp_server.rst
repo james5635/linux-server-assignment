@@ -18,7 +18,7 @@ Server
 Client
 ~~~~~~
 
-.. literalinclude:: ../../src/dhcp_client/dhcp_client.sh
+.. literalinclude:: ../../src/dhcp_server/dhcp_client.sh
    :language: bash
    
 Usage

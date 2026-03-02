@@ -27,6 +27,7 @@ Usage
 Before running this, make sure the vpn server have already finished stating the server.
 
 .. code-block:: bash
+
     # run bash in the client
     docker exec -it linux-server-assignment-vpn_client-1 bash
 
