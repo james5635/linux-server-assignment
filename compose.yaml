@@ -99,8 +99,6 @@ services:
     command: bash /root/backup_server.sh
     depends_on:
       - ftp_server
-    # ports:
-      # - "127.0.0.1:80:80"
   docker:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -162,7 +160,22 @@ services:
       - openvpn-data:/etc/openvpn
     working_dir: /root
     command: sleep infinity
-    # ports:
-      # - "1194:1194/udp"
+  dhcp_server:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/dhcp_server/dhcp_server.sh:/root/dhcp_server.sh:ro
+    working_dir: /root
+    command: bash /root/dhcp_server.sh
+    depends_on:
+      - dhcp_client
+    # ports:          # reserve for production use
+      # - "67:67/udp" # if dhcp server listen on 127.0.0.1:67, it is impossible for any client (including in the same machine) to connect to the dhcp server
+      # - "68:68/udp"
+  dhcp_client:
+    image: quay.io/centos/centos:stream9
+    volumes:
+      - ./src/dhcp_server/dhcp_client.sh:/root/dhcp_client.sh:ro
+    working_dir: /root
+    command: sleep infinity
 volumes:
    openvpn-data:
