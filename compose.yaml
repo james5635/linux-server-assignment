@@ -83,7 +83,7 @@ services:
       - web1
       - web2
     ports:
-      - "127.0.0.1:80:80"
+      - "127.0.0.1:81:80"
   web1:
     image: nginx:stable-alpine
     volumes:

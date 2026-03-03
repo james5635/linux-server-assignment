@@ -15,8 +15,13 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
    
+   file_server
+   proxy_server
+   dns_server
    dhcp_server
    vpn_server
+   terminal_server
+   web_server
    mail_server
    backup_server
    load_balancing

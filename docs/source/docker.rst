@@ -16,4 +16,4 @@ Implementation
 Usage
 -----
 
-ssh to root@localhost with port 8081 and password 'password'
+ssh to `root@localhost` with port 8081 and password 'password'

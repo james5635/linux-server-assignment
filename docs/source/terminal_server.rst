@@ -15,4 +15,4 @@ Implementation
 Usage
 -----
 
-Use vnc client such remmina with password dog@123
+Use vnc client such remmina with password `dog@123`
