@@ -23,6 +23,11 @@ MongoDB
 .. literalinclude:: ../../src/database_server/mongodb.sh
    :language: bash
 
+SQL Server
+~~~~~~~~~~
+
+.. literalinclude:: ../../src/database_server/sql_server.sh
+   :language: bash
 
 Usage
 -----
@@ -76,3 +81,28 @@ MongoDB
     # test>
     
     
+SQL Server
+~~~~~~~~~~
+
+.. code-block:: bash
+    
+    /opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P 'YourStrong!Password'
+    
+    # +---------------+
+    # | Sample Output |
+    # +---------------+
+    # [root@Jame-Linux /]# /opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P 'YourStrong!Password'
+    # 1> CREATE TABLE cat(name varchar(100), age int)
+    # 2> GO
+    # 1> INSERT INTO cat VALUES('moo', 12)
+    # 2> GO
+    # 
+    # (1 rows affected)
+    # 1> SELECT * FROM cat
+    # 2> GO
+    # name                                                                                                 age
+    # ---------------------------------------------------------------------------------------------------- -----------
+    # moo                                                                                                           12
+    # 
+    # (1 rows affected)
+    # 1>

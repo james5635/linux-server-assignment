@@ -48,13 +48,15 @@ services:
       - ./src/database_server/database_server.sh:/root/database_server.sh:ro
       - ./src/database_server/postgresql.sh:/root/postgresql.sh:ro
       - ./src/database_server/mongodb.sh:/root/mongodb.sh:ro
+      - ./src/database_server/sql_server.sh:/root/sql_server.sh:ro
       - ./src/database_server/mysql.sh:/root/mysql.sh:ro
     working_dir: /root
     command: bash /root/database_server.sh
     ports:
-      - "127.0.0.1:5432:5432"
-      - "127.0.0.1:27017:27017"
-      - "127.0.0.1:3306:3306"
+      - "127.0.0.1:5432:5432" # postgresql
+      - "127.0.0.1:27017:27017" # mongodb
+      - "127.0.0.1:1433:1433" # sql server
+      - "127.0.0.1:3306:3306" # mysql
   mail_server:
     image: quay.io/centos/centos:stream9
     volumes:
