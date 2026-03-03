@@ -16,3 +16,6 @@ Usage
 -----
 
 Open firefox and change proxy to localhost with port 3128
+
+- visit youtube.com => allow
+- visit facebook.com => blocked
