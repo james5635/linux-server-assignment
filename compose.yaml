@@ -25,6 +25,7 @@ services:
     command: bash /root/dns_server.sh
     ports:
       - "127.0.0.1:53:53"
+      - "127.0.0.1:53:53/udp"
   terminal_server:
     image: quay.io/centos/centos:stream9
     volumes:

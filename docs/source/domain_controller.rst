@@ -3,6 +3,7 @@ Domain Controller
 
 Introduction
 ------------
+
 FreeIPA is a free, open-source Identity Management (IdM) solution designed primarily for Linux and Unix-based networked environments. Often described as the Linux equivalent of Microsoft Active Directory, it provides a centralized platform for managing authentication, authorization, and network policies.
 
 Implementation
