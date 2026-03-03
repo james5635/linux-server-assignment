@@ -8,12 +8,14 @@
 
 project = 'linux-server-assignment'
 copyright = '2026, Sou Chanrojame'
-author = 'Sou Chanrojame'
+author = 'Sou Chanrojame, Orn Pheakdey, Long Neron, Le Sreyma, Then Sivthean'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = []
+
+latex_engine = "xelatex"
 
 templates_path = ['_templates']
 exclude_patterns = []
