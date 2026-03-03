@@ -6,10 +6,7 @@
 linux-server-assignment documentation
 =====================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+This is linux-server-assignment which include 15 labs.
 
 .. toctree::
    :maxdepth: 2
@@ -23,10 +20,12 @@ documentation for details.
    terminal_server
    web_server
    mail_server
+   database_server
    backup_server
    load_balancing
    failover_cluster
    ftp_server
    docker
    domain_controller
+   compose_yaml
    

@@ -4,6 +4,7 @@ Database Server
 Introduction
 ------------
 
+PostgreSQL, MongoDB, and Microsoft SQL Server are popular database management systems that store, organize, and manage data for applications. PostgreSQL and SQL Server are relational databases that use structured schemas and SQL queries for reliable transaction processing, while MongoDB is a NoSQL database optimized for flexible, document-oriented storage. A database server provides centralized data management, allowing multiple clients or applications to securely read, write, and manipulate data efficiently, ensuring consistency, availability, and scalability.
 
 Implementation
 --------------
