@@ -1,0 +1,220 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 5 Amazon Linux 2023 EC2 instances with Docker pre-installed (Academy Sandbox compliant)
+
+Parameters:
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      - t2.nano
+      - t2.micro
+      - t2.small
+      - t2.medium
+      - t3.nano
+      - t3.micro
+      - t3.small
+      - t3.medium
+    Description: EC2 Instance type allowed in the lab.
+
+  KeyName:
+    Type: String
+    AllowedValues:
+      - x
+      - vockey
+    Default: x
+    Description: KeyPair (use vockey for us-east-1 per lab instructions)
+
+  LinuxAmi:
+    Type: String
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+    AllowedValues:
+      - /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+      - /aws/service/ami-amazon-linux-latest/al2023-ami-minimal-kernel-default-x86_64
+    Description: SSM parameter name for the Amazon Linux 2023 AMI
+
+Resources:
+
+  # === Security Group (shared by all 5 instances) ===
+  DockerInstanceSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      VpcId: !Ref AWS::NoValue  # Auto for default VPC
+
+  # === Instance 1 ===
+  DockerInstance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: !Sub '{{resolve:ssm:${LinuxAmi}}}'
+      SecurityGroupIds:
+        - !Ref DockerInstanceSG
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: AmazonLinux2023-Docker-1
+        - Key: Environment
+          Value: DockerDemo
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -ex
+          dnf update -y
+          dnf install -y docker
+          systemctl enable --now docker
+          usermod -aG docker ec2-user
+
+  # === Instance 2 ===
+  DockerInstance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: !Sub '{{resolve:ssm:${LinuxAmi}}}'
+      SecurityGroupIds:
+        - !Ref DockerInstanceSG
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: AmazonLinux2023-Docker-2
+        - Key: Environment
+          Value: DockerDemo
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -ex
+          dnf update -y
+          dnf install -y docker
+          systemctl enable --now docker
+          usermod -aG docker ec2-user
+
+  # === Instance 3 ===
+  DockerInstance3:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: !Sub '{{resolve:ssm:${LinuxAmi}}}'
+      SecurityGroupIds:
+        - !Ref DockerInstanceSG
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: AmazonLinux2023-Docker-3
+        - Key: Environment
+          Value: DockerDemo
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -ex
+          dnf update -y
+          dnf install -y docker
+          systemctl enable --now docker
+          usermod -aG docker ec2-user
+
+  # === Instance 4 ===
+  DockerInstance4:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: !Sub '{{resolve:ssm:${LinuxAmi}}}'
+      SecurityGroupIds:
+        - !Ref DockerInstanceSG
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: AmazonLinux2023-Docker-4
+        - Key: Environment
+          Value: DockerDemo
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -ex
+          dnf update -y
+          dnf install -y docker
+          systemctl enable --now docker
+          usermod -aG docker ec2-user
+
+  # === Instance 5 ===
+  DockerInstance5:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      IamInstanceProfile: LabInstanceProfile
+      ImageId: !Sub '{{resolve:ssm:${LinuxAmi}}}'
+      SecurityGroupIds:
+        - !Ref DockerInstanceSG
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+            DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: AmazonLinux2023-Docker-5
+        - Key: Environment
+          Value: DockerDemo
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -ex
+          dnf update -y
+          dnf install -y docker
+          systemctl enable --now docker
+          usermod -aG docker ec2-user
+
+Outputs:
+  Instance1PublicIP:
+    Description: Public IP of Docker Instance 1
+    Value: !GetAtt DockerInstance1.PublicIp
+  Instance2PublicIP:
+    Description: Public IP of Docker Instance 2
+    Value: !GetAtt DockerInstance2.PublicIp
+  Instance3PublicIP:
+    Description: Public IP of Docker Instance 3
+    Value: !GetAtt DockerInstance3.PublicIp
+  Instance4PublicIP:
+    Description: Public IP of Docker Instance 4
+    Value: !GetAtt DockerInstance4.PublicIp
+  Instance5PublicIP:
+    Description: Public IP of Docker Instance 5
+    Value: !GetAtt DockerInstance5.PublicIp
+  HowToConnect:
+    Description: Connection instructions
+    Value: |
+      SSM Session Manager (no key needed):
+        1. EC2 Console -> Instances -> Select instance -> Connect -> Session Manager
+
+      SSH (using vockey):
+        ssh -i vockey.pem ec2-user@<Public-IP-from-Outputs>
+
+      Verify Docker on any instance:
+        docker --version && docker run --rm hello-world
