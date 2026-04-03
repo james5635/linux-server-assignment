@@ -90,7 +90,7 @@ dnf install -y spal-release
 dnf install -y docker-compose git
 systemctl enable --now docker
 usermod -aG docker ec2-user
-git -C /home/ec2-user clone https://github.com/james5635/linux-server-assignment 
+su ec2-user -c "git -C /home/ec2-user clone https://github.com/james5635/linux-server-assignment"
 EOF
 )
 
