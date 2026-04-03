@@ -104,55 +104,61 @@ for i in $SYSTEMS; do
   case "$i" in
     "FileServer_ProxyServer")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d file_server
+      docker compose up -d proxy_server
 EOF
       )
       ;;
     "DNSServer_DHCPServer")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d dns_server
+      docker compose up -d dhcp_server
 EOF
       )
       ;;
     "VPNServer_TerminalServer")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d vpn_server
+      docker compose up -d terminal_server
 EOF
       )
       ;;
     "WebServer_MailServer")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d web_server
+      docker compose up -d mail_server
 EOF
       )
       ;;
     "DatabaseServer")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d database_server
 EOF
       )
       ;;
     "BackupServer_LoadBalancing")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d backup_server
+      docker compose up -d load_balancing
 EOF
       )
       ;;
     "FailoverCluster")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d failover_cluster
 EOF
       )
       ;;
     "FTPServer_Container")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d ftp_server
+      docker compose up -d docker
 EOF
       )
       ;;
     "DomainController")
       USER_DATA+=$(cat <<'EOF'
-      
+      docker compose up -d domain_controller
 EOF
       )
       ;;
