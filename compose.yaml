@@ -24,8 +24,8 @@ services:
     working_dir: /root
     command: bash /root/dns_server.sh
     ports:
-      - "127.0.0.1:53:53"
-      - "127.0.0.1:53:53/udp"
+      - "0.0.0.0:53:53"
+      - "0.0.0.0:53:53/udp"
   terminal_server:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -33,7 +33,7 @@ services:
     working_dir: /root
     command: bash /root/terminal_server.sh
     ports:
-      - "127.0.0.1:5901:5901"
+      - "0.0.0.0:5901:5901"
   web_server:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -41,7 +41,7 @@ services:
     working_dir: /root
     command: bash /root/web_server.sh
     ports:
-      - "127.0.0.1:80:80"
+      - "0.0.0.0:80:80"
   database_server:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -53,10 +53,10 @@ services:
     working_dir: /root
     command: bash /root/database_server.sh
     ports:
-      - "127.0.0.1:5432:5432" # postgresql
-      - "127.0.0.1:27017:27017" # mongodb
-      - "127.0.0.1:1433:1433" # sql server
-      - "127.0.0.1:3306:3306" # mysql
+      - "0.0.0.0:5432:5432" # postgresql
+      - "0.0.0.0:27017:27017" # mongodb
+      - "0.0.0.0:1433:1433" # sql server
+      - "0.0.0.0:3306:3306" # mysql
   mail_server:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -64,9 +64,9 @@ services:
     working_dir: /root
     command: bash /root/mail_server.sh
     ports:
-      - "127.0.0.1:25:25"
-      - "127.0.0.1:143:143"
-      - "127.0.0.1:110:110"
+      - "0.0.0.0:25:25"
+      - "0.0.0.0:143:143"
+      - "0.0.0.0:110:110"
   ftp_server:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -74,7 +74,7 @@ services:
     working_dir: /root
     command: bash /root/ftp_server.sh
     ports:
-      - "127.0.0.1:21:21"
+      - "0.0.0.0:21:21"
   load_balancing:
     image: quay.io/centos/centos:stream9
     volumes:
@@ -85,7 +85,7 @@ services:
       - web1
       - web2
     ports:
-      - "127.0.0.1:81:80"
+      - "0.0.0.0:81:80"
   web1:
     image: nginx:stable-alpine
     volumes:
@@ -110,7 +110,7 @@ services:
     command: bash /root/docker.sh
     privileged: true
     ports:
-      - "127.0.0.1:8081:22"
+      - "0.0.0.0:8081:22"
   domain_controller:
     image: freeipa/freeipa-server:centos-9-stream
     hostname: ipa.example.test
