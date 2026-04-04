@@ -64,7 +64,7 @@ services:
     working_dir: /root
     command: bash /root/mail_server.sh
     ports:
-      - "0.0.0.0:25:25"
+      - "0.0.0.0:2525:25" # Because of widespread abuse by spammers and malware, most ISP and cloud providers block port 25 for end-user submissions (e.g., using Outlook/Thunderbird)
       - "0.0.0.0:143:143"
       - "0.0.0.0:110:110"
   ftp_server:

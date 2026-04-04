@@ -91,6 +91,7 @@ dnf install -y docker-compose git
 systemctl enable --now docker
 usermod -aG docker ec2-user
 su ec2-user -c "git -C /home/ec2-user clone https://github.com/james5635/linux-server-assignment"
+cd /home/ec2-user/linux-server-assignment
 EOF
 )
 
@@ -175,7 +176,7 @@ EOF
     --instance-type "$INSTANCE_TYPE" \
     --key-name "$KEY_NAME" \
     --security-groups "$SECURITY_GROUP_NAME" \
-    --block-device-mappings '[{"DeviceName":"/dev/xvda","Ebs":{"VolumeSize":8,"VolumeType":"gp2","DeleteOnTermination":true}}]' \
+    --block-device-mappings '[{"DeviceName":"/dev/xvda","Ebs":{"VolumeSize":35,"VolumeType":"gp2","DeleteOnTermination":true}}]' \
     --user-data "$USER_DATA" \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i},{Key=Environment,Value=DockerDemo}]" \
     --region "$REGION" \
