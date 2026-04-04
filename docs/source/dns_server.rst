@@ -18,7 +18,7 @@ Usage
 
 .. code-block:: bash
     
-    dog  console.devspeed.com @127.0.0.1
+    dog  console.devspeed.com @127.0.0.1 # replace 127.0.0.1 with ip address of dns server
     dog  go.devspeed.com @127.0.0.1
     dog  blog.devspeed.com @127.0.0.1
     dog  shop.devspeed.com @127.0.0.1
@@ -54,3 +54,5 @@ Usage
     # [ 11:20AM ]  [ jame@Jame-Linux:~/Desktop/coding/linux-server-assignment/src(master✗) ]
     # $ dog  www2.devspeed.com @127.0.0.1
     # A www2.devspeed.com. 1d0h00m00s   192.168.1.100
+    
+.. figure:: _static/dns_server.png

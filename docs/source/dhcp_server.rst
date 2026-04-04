@@ -24,9 +24,11 @@ Client
 Usage
 -----
 
+Connect to dhcp server instance with ssh.
+
 .. code-block:: bash
 
-    docker exec -it dhcp_client bash
+    docker exec -it linux-server-assignment-dhcp_client-1 bash
     bash /root/dhcp_client.sh
     
     dhclient -d eth0
@@ -51,3 +53,5 @@ Usage
     # System has not been booted with systemd as init system (PID 1). Can't operate.
     # Failed to connect to bus: Host is down
     # bound to 172.17.0.100 -- renewal in 270 seconds.
+
+.. figure:: _static/dhcp_server.png

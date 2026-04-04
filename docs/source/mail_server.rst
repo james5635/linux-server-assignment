@@ -9,7 +9,7 @@ A mail server is a system that sends, receives, stores, and manages email messag
 Implementation
 --------------
 
-.. literalinclude:: ../../src/backup_server/backup_server.sh
+.. literalinclude:: ../../src/mail_server/mail_server.sh
    :language: bash
 
 Usage
@@ -25,4 +25,4 @@ Usage
   - port: 143
 - SMTP
   - hostname: `<ip of mail server>`
-  - port: 25
+  - port: 2525

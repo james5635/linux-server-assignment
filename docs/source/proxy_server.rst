@@ -15,7 +15,16 @@ Implementation
 Usage
 -----
 
+.. code-block:: bash
+
+    ssh -i <keypair> -L 5901:localhost:5901 ec2-user@<address>
+
+Use your VNC client to connect to localhost:5901 or 127.0.0.1:5901 with password 'dog@123'
+
 Open firefox and change proxy to localhost with port 3128
 
 - visit youtube.com => allow
 - visit facebook.com => blocked
+
+.. figure:: _static/proxy_server_1.png
+.. figure:: _static/proxy_server_2.png

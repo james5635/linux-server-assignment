@@ -85,6 +85,9 @@ echo "Using AMI: $AMI_ID"
 # =============================================
 BASE_USER_DATA=$(cat <<'EOF'
 #!/bin/bash -ex
+# redirect stdout/stderr to a file
+exec >logfile.txt 2>&1
+
 dnf update -y
 dnf install -y spal-release
 dnf install -y docker-compose git
@@ -107,6 +110,14 @@ for i in $SYSTEMS; do
       USER_DATA+=$(cat <<'EOF'
       docker compose up -d file_server
       docker compose up -d proxy_server
+
+      dnf groupinstall "Desktop" -y
+      dnf install -y tigervnc-server
+      su ec2-user -c 'echo -e "dog@123\ndog@123" | vncpasswd'
+      echo ':1=ec2-user' > /etc/tigervnc/vncserver.users
+      echo -e "session=gnome\nsecuritytypes=vncauth,tlsvnc\ngeometry=1280x720\nlocalhost\nalwaysshared" > /etc/tigervnc/vncserver-config-defaults
+      systemctl enable --now vncserver@:1
+      echo "finished vncserver"
 EOF
       )
       ;;

@@ -16,8 +16,11 @@ Implementation
 Usage
 -----
 
+Connect to file server intance with ssh. 
+
 .. code-block:: bash
     
+    sudo dnf install -y samba-client
     smbclient //localhost/shared  -N
     
     # +---------------+
@@ -28,3 +31,5 @@ Usage
     # Anonymous login successful
     # Try "help" to get a list of possible commands.
     # smb: \>
+    
+.. figure:: _static/file_server.png
