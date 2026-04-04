@@ -38,7 +38,7 @@ PostgreSQL
 
 .. code-block:: bash
     
-    psql -h localhost -p 5432 -U postgres
+    psql -h <ip of postgresql> -p 5432 -U postgres
     
     # +---------------+
     # | Sample Output |
@@ -48,13 +48,15 @@ PostgreSQL
     # Type "help" for help.
     # 
     # postgres=#
+    
+.. figure:: _static/postgresql.png
 
 MongoDB
 ~~~~~~~
 
 .. code-block:: bash
     
-    mongosh
+    mongosh <ip of mongodb>
     
     # +---------------+
     # | Sample Output |
@@ -81,13 +83,14 @@ MongoDB
     # 
     # test>
     
+.. figure:: _static/mongodb.png
     
 SQL Server
 ~~~~~~~~~~
 
 .. code-block:: bash
     
-    /opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P 'YourStrong!Password'
+    /opt/mssql-tools18/bin/sqlcmd -S <ip of sql server> -C -U sa -P 'YourStrong!Password'
     
     # +---------------+
     # | Sample Output |
@@ -107,3 +110,5 @@ SQL Server
     # 
     # (1 rows affected)
     # 1>
+    
+.. figure:: _static/sqlserver.png

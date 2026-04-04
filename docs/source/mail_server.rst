@@ -16,13 +16,17 @@ Usage
 -----
 
 - open thunderbird
-- username: student
-- password: password
-- username: testuser
-- password: password
+- email: `student@mail.local`
+    - username: student
+    - password: password
+- email: `testuser@mail.local`
+    - username: testuser
+    - password: password
 - IMAP
   - hostname: `<ip of mail server>`
   - port: 143
 - SMTP
   - hostname: `<ip of mail server>`
   - port: 2525
+  
+.. figure:: _static/mail_server.png

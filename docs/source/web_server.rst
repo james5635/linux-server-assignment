@@ -15,5 +15,7 @@ Implementation
 Usage
 -----
 
-- open firefox and visit `http://localhost/`
-- curl `http://localhost/`
+- open firefox and visit `http://<ip_of_web_server>/`
+- curl `http://<ip_of_web_server>/`
+
+.. figure:: _static/web_server.png

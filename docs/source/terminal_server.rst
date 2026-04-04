@@ -15,4 +15,6 @@ Implementation
 Usage
 -----
 
-Use vnc client such as remmina with password `dog@123`
+Use vnc client such as remmina connecting to <ip_of_terminal_server>:5901 with password `dog@123`
+
+.. figure:: _static/terminal_server.png
