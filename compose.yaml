@@ -127,7 +127,7 @@ services:
       - ./src/domain_controller/domain_controller.sh:/root/domain_controller.sh:ro
     working_dir: /root
     command: >
-      bash /root/domain_controller.sh
+      ipa-server-install -U -r EXAMPLE.TEST --no-ntp --skip-mem-check
     depends_on:
       - centos9_systemd
   centos9_systemd:
