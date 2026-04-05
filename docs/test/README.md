@@ -9,7 +9,7 @@
 9. Database Server (MongoDB, Oracle, SQL Server, PostgreSQL) ✅
 10. Backup Server ✅
 11. Load Balancing ✅
-12. Failover Cluster
+12. Failover Cluster ✅
 13. FTP Server ✅
 14. Container (Docker) ✅
 15. Domain Controller

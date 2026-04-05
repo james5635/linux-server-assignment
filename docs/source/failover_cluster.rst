@@ -18,12 +18,20 @@ Implementation
 Usage
 -----
 
+Connect to failover cluster instance with ssh.
+
+Use tmux to start multiple terminal sessions.
+
+.. code-block:: bash
+
+    sudo dnf install -y tmux
+
 Node1
 ~~~~~
 
 .. code-block:: bash
 
-    docker exec -it failover_cluster bash
+    docker exec -it linux-server-assignment-failover_cluster-1 bash
     bash /root/failover_cluster.sh
     
     # Make sure Node2 finish
@@ -70,11 +78,14 @@ Node1
     #        valid_lft forever preferred_lft forever
     #     inet 172.18.0.200/16 brd 172.18.255.255 scope global secondary eth0
     #        valid_lft forever preferred_lft forever
-    
+  
+.. figure:: _static/failover_cluster.png
+
+
 Node2
 ~~~~~
 
 .. code-block:: bash
 
-    docker exec -it failover_cluster_2 bash
+    docker exec -it linux-server-assignment-failover_cluster_2-1 bash
     bash /root/failover_cluster.sh
