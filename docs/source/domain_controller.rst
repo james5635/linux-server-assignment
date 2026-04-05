@@ -29,7 +29,8 @@ Domain Controller
     kinit admin # password `Secret123`
     ipa user-add testuser --first=Test --last=User --password
 
-
+.. figure:: _static/domain_controller.png
+    
 Client
 ~~~~~~
 
@@ -50,9 +51,9 @@ Client
     
     su admin
     su testuser
-    
-.. figure:: _static/domain_controller.png
 
 .. figure:: _static/domain_controller_2.png
 
 .. figure:: _static/domain_controller_3.png
+
+.. figure:: _static/domain_controller_4.png
