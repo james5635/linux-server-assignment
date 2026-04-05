@@ -9,7 +9,7 @@ dnf install -y cronie openssh-clients
 mkdir /backup
 
 cat <<"EOF" >> /etc/crontab
-*  *  *  *  * root scp -r root@ftp_server:/home/ftpuser /backup && date >> /log.txt
+*  *  *  *  * root scp -P 2222 -o StrictHostKeyChecking=no -r root@FTP_SERVER_IP_PLACEHOLDER:/home/ftpuser /backup >> /log.txt && date >> /log.txt
 EOF
 
 mkdir -p /root/.ssh

@@ -76,6 +76,7 @@ services:
     ports:
       - "0.0.0.0:21:21"
       - "0.0.0.0:21100-21110:21100-21110" # Expose Passive FTP ports
+      - "0.0.0.0:2222:22" # ADD THIS to expose SSH for scp
   load_balancing:
     image: quay.io/centos/centos:stream9
     volumes:

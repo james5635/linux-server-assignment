@@ -16,9 +16,9 @@ DNSServer_DHCPServer
 VPNServer_TerminalServer
 WebServer_MailServer
 DatabaseServer
+FTPServer_Container
 BackupServer_LoadBalancing
 FailoverCluster
-FTPServer_Container
 DomainController
 EOF
 )
@@ -98,6 +98,8 @@ cd /home/ec2-user/linux-server-assignment
 EOF
 )
 
+FTP_PRIVATE_IP=""
+
 # =============================================
 # Launch instances one by one
 # =============================================
@@ -149,7 +151,8 @@ EOF
       )
       ;;
     "BackupServer_LoadBalancing")
-      USER_DATA+=$(cat <<'EOF'
+      USER_DATA+=$(cat <<EOF
+      sed -i "s/FTP_SERVER_IP_PLACEHOLDER/$FTP_PRIVATE_IP/g" src/backup_server/backup_server.sh
       docker compose up -d backup_server
       docker compose up -d load_balancing
 EOF
@@ -210,6 +213,17 @@ EOF
   echo "  Instance $i is running!"
   echo "  Public IP: $PUBLIC_IP"
   echo "  SSH: ssh -i $KEY_NAME.pem ec2-user@$PUBLIC_IP"
+  
+  # If this was the FTP server, save the private IP for the next iterations
+  if [ "$i" == "FTPServer_Container" ]; then
+    FTP_PRIVATE_IP=$(aws ec2 describe-instances \
+      --instance-ids "$INSTANCE_ID" \
+      --region "$REGION" \
+      --query "Reservations[0].Instances[0].PrivateIpAddress" \
+      --output text)
+    echo "  Captured FTP Private IP: $FTP_PRIVATE_IP"
+  fi
+  
 done
 
 echo ""

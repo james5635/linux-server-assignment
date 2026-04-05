@@ -20,6 +20,6 @@ The backup server will backup ftp server every one minute.
 
 .. code-block:: bash
     
-    docker exec -it baclup_server bash
+    docker exec -it linux-server-assignment-backup_server-1 bash
     ls /backup
     cat /log.txt
