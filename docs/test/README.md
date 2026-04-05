@@ -12,4 +12,4 @@
 12. Failover Cluster ✅
 13. FTP Server ✅
 14. Container (Docker) ✅
-15. Domain Controller
+15. Domain Controller ✅

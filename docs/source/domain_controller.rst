@@ -26,7 +26,7 @@ Domain Controller
     # make sure the freeipa server is running completely
     docker exec -it linux-server-assignment-domain_controller-1 bash
     
-    kinit admin
+    kinit admin # password `Secret123`
     ipa user-add testuser --first=Test --last=User --password
 
 
@@ -50,3 +50,9 @@ Client
     
     su admin
     su testuser
+    
+.. figure:: _static/domain_controller.png
+
+.. figure:: _static/domain_controller_2.png
+
+.. figure:: _static/domain_controller_3.png
