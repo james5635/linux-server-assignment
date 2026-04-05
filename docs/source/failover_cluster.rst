@@ -35,7 +35,7 @@ Node1
     bash /root/failover_cluster.sh
     
     # Make sure Node2 finish
-    bash /root/failover_cluster_one_node_only.sh
+    bash /root/failover_cluster_one_node_only.sh # password `password`
     
     pcs status
     ip add
