@@ -18,8 +18,13 @@ Usage
 
 The backup server will backup ftp server every one minute.
 
+Connect to backup server instance with ssh.
+
 .. code-block:: bash
     
     docker exec -it linux-server-assignment-backup_server-1 bash
     ls /backup
     cat /log.txt
+    
+
+.. figure:: _static/backup_server.png
