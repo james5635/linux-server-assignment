@@ -15,4 +15,8 @@ Implementation
 Usage
 -----
    
-vist `http://localhost:81`
+vist `http://<ip of load balancing>:81`
+
+.. figure:: _static/load_balancing.png
+
+.. figure:: _static/load_balancing_2.png

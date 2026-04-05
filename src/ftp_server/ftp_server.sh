@@ -11,10 +11,18 @@ chmod 600 /root/.ssh/authorized_keys
 ssh-keygen -A
 /usr/sbin/sshd
 
-dnf install -y vsftpd
-# dnf clean all
 
+dnf install -y --allowerasing vsftpd curl
+dnf clean all
+
+PUBLIC_IP=$(curl http://checkip.amazonaws.com)
 useradd -m ftpuser && echo "ftpuser:password" | chpasswd
+
+# Configure vsftpd for Passive Mode
+echo "pasv_enable=YES" >> /etc/vsftpd/vsftpd.conf
+echo "pasv_min_port=21100" >> /etc/vsftpd/vsftpd.conf
+echo "pasv_max_port=21110" >> /etc/vsftpd/vsftpd.conf
+echo "pasv_address=${PUBLIC_IP}" >> /etc/vsftpd/vsftpd.conf
 
 vsftpd
 sleep infinity

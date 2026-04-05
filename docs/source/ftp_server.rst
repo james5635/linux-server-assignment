@@ -16,6 +16,10 @@ Implementation
 Usage
 -----
 
-- use filezilla (port 21)
+- use filezilla
+- host: <ip of ftp server>
+- port: 21
 - username: ftpuser
 - password: password
+
+.. figure:: _static/ftp_server.png
