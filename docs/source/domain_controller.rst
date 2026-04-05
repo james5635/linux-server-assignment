@@ -16,8 +16,37 @@ Implementation
 Usage
 -----
 
+Connect to domain controller instance with ssh.
+
+Domain Controller
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+    
+    # make sure the freeipa server is running completely
+    docker exec -it linux-server-assignment-domain_controller-1 bash
+    
+    kinit admin
+    ipa user-add testuser --first=Test --last=User --password
+
+
+Client
+~~~~~~
+
+
 .. code-block:: bash
 
-    docker exec -it centos9_systemd bash
+    # make sure to run this after the domain controller usage
+    docker exec -it linux-server-assignment-centos9_systemd-1 bash
+
+    dnf -y install freeipa-client
+    echo "client1.example.test" > /etc/hostname
+    hostname client1.example.test
+    ipa-client-install --mkhomedir
+    id admin
+    getent passwd admin
+    id testuser
+    getent passwd testuser
+    
     su admin
     su testuser

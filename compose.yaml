@@ -124,8 +124,10 @@ services:
       PASSWORD: Secret123
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./src/domain_controller/domain_controller.sh:/root/domain_controller.sh:ro
+    working_dir: /root
     command: >
-      ipa-server-install -U -r EXAMPLE.TEST --no-ntp --skip-mem-check
+      bash /root/domain_controller.sh
     depends_on:
       - centos9_systemd
   centos9_systemd:
