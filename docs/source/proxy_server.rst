@@ -21,7 +21,7 @@ Usage
 
 Use your VNC client to connect to localhost:5901 or 127.0.0.1:5901 with password 'dog@123'
 
-Open firefox and change proxy to localhost with port 3128
+Open firefox and change proxy to localhost with port 3128 (make sure `https` is checked)
 
 - visit youtube.com => allow
 - visit facebook.com => blocked
