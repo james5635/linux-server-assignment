@@ -44,6 +44,7 @@ Client
     echo "client1.example.test" > /etc/hostname
     hostname client1.example.test
     ipa-client-install --mkhomedir
+    
     id admin
     getent passwd admin
     id testuser
