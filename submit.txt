@@ -1,7 +1,7 @@
 ជម្រាបសួរលោកគ្រូ
 នេះគឺជា projectសម្រាប់ក្រុមទី​ 1
 - 15 linux systems are presented and demoed at <url>
-- tryhackme is 30089pt
+- documentation is located in docs directory
 
 សមាជិក
 - Sou Chanrojame
