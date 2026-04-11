@@ -15,7 +15,7 @@ Implementation
 Usage
 -----
    
-vist `http://<ip of load balancing>:81`
+visit `http://<ip of load balancing>:81`
 
 .. figure:: _static/load_balancing.png
 
