@@ -1,5 +1,6 @@
 # EXPOSE/expose => no-op/documentation (modern) [can be used with -P]
 #               => ... (old)
+# https://docs.docker.com/reference/dockerfile/#expose:~:text=the%20other%20labels.-,EXPOSE,-EXPOSE%20%3Cport%3E
 services:
   file_server:
     image: quay.io/centos/centos:stream9
